@@ -85,14 +85,6 @@ public class PropertyServiceImpl implements PropertyService {
                 propertyDTO.getAddress() != null && !(propertyDTO.getAddress().isBlank() || propertyDTO.getAddress().isEmpty()) ?
                         propertyDTO.getAddress() :
                         "";
-        String ownerName =
-                propertyDTO.getOwnerName() != null && !(propertyDTO.getOwnerName().isBlank() || propertyDTO.getOwnerName().isEmpty()) ?
-                        propertyDTO.getOwnerName() :
-                        "";
-        String ownerEmail =
-                propertyDTO.getOwnerEmail() != null && !(propertyDTO.getOwnerEmail().isBlank() || propertyDTO.getOwnerEmail().isEmpty()) ?
-                        propertyDTO.getOwnerEmail() :
-                        "";
         if (!title.isEmpty())
             pe.setTitle(propertyDTO.getTitle());
         if (!desc.isEmpty())
@@ -101,10 +93,6 @@ public class PropertyServiceImpl implements PropertyService {
             pe.setPrice(propertyDTO.getPrice());
         if (!address.isEmpty())
             pe.setAddress(propertyDTO.getAddress());
-        if (!ownerName.isEmpty())
-            pe.setOwnerName(propertyDTO.getOwnerName());
-        if (!ownerEmail.isEmpty())
-            pe.setOwnerEmail(propertyDTO.getOwnerEmail());
         return pe;
     }
 }
