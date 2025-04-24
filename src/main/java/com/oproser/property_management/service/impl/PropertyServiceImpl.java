@@ -30,6 +30,7 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public List<PropertyDTO> getAllProperties() {
+        System.out.println("Inside getAllProperties");
         List<PropertyEntity> listOfProps = (List<PropertyEntity>) propertyRepository.findAll();
         List<PropertyDTO> propertyDTOList = new ArrayList<>();
         for (PropertyEntity propertyEntity : listOfProps) {
@@ -63,7 +64,9 @@ public class PropertyServiceImpl implements PropertyService {
     @Override
     public PropertyDTO getPropertyById(Long id) {
         if (propertyRepository.existsById(id)) {
-            return propertyConverter.convertEntitytoDTO(propertyRepository.findById(id).get());
+            if (propertyRepository.findById(id).isPresent()) {
+                return propertyConverter.convertEntitytoDTO(propertyRepository.findById(id).get());
+            }
         }
         return null;
     }
