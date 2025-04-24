@@ -5,16 +5,15 @@ import com.oproser.property_management.dto.UserDTO;
 import com.oproser.property_management.entity.UserEntity;
 import com.oproser.property_management.repository.UserRepository;
 import com.oproser.property_management.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    private UserConverter userConverter;
+    private final UserConverter userConverter;
 
     @Override
     public UserDTO registerUser(UserDTO userDTO) {

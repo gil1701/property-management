@@ -2,8 +2,7 @@ package com.oproser.property_management.controller;
 
 import com.oproser.property_management.dto.PropertyDTO;
 import com.oproser.property_management.service.PropertyService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,12 +11,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/properties")
+@RequiredArgsConstructor
 public class PropertyController {
-    @Autowired
-    private PropertyService propertyService;
 
-    @Value("${pms.dummy}")
-    private String dummy;
+    private final PropertyService propertyService;
 
     @GetMapping("/hello")
     public String sayHello() {
@@ -32,7 +29,6 @@ public class PropertyController {
 
     @GetMapping("/all")
     public ResponseEntity<List<PropertyDTO>> getAllProperties() {
-        System.out.println(dummy);
         List<PropertyDTO> propertyDTOList = propertyService.getAllProperties();
         return new ResponseEntity<>(propertyDTOList, HttpStatus.OK);
     }
